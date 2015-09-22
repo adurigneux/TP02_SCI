@@ -1,9 +1,14 @@
 package fr.lille1.sci.core;
+
+import java.awt.Color;
+
 public abstract class Agent {
 
     protected Environnement env;
     protected int x;
     protected int y;
+    protected Color color;
+    protected int numero;
 
     public Agent(Environnement env, int x, int y) {
         this.env = env;
@@ -37,8 +42,25 @@ public abstract class Agent {
     public void setEnv(Environnement env) {
         this.env = env;
     }
+    
 
-    public abstract void decide();
+    public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+	public abstract void decide();
 
     @Override
     public String toString() {

@@ -15,7 +15,6 @@ public class Bille extends Agent {
     public static final int LOWER_CENTER = 6;
     public static final int RIGHT = 7;
     public static final int LEFT = 8;
-    private int numero;
     private int vitesse; //(vitesse = nombre de cases par "tour")
     private int sens;
     private Color couleur;
@@ -34,14 +33,6 @@ public class Bille extends Agent {
         //this.vitesse = random.nextInt(9) + 1; //retirer le 0
         this.vitesse = 1;
         this.sens = random.nextInt(7) + 1;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
     }
 
     public int getVitesse() {

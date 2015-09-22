@@ -1,4 +1,11 @@
 package fr.lille1.sci.core;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import fr.lille1.sci.main.Position;
+
 public class Environnement {
 
     private Agent[][] espace;
@@ -21,7 +28,6 @@ public class Environnement {
     }
 
     public boolean put(int x, int y, Agent agent) {
-
         this.espace[x][y] = agent;
         return true;
     }
@@ -48,6 +54,26 @@ public class Environnement {
 
     public void clear(int x, int y) {
         this.espace[x][y] = null;
+    }
+    
+    public Position getPlaceLibre(int x, int y) {
+    	
+    	List<Position> positions = new ArrayList<Position>();
+    	
+    	for(int i = x - 1; i <= x + 1; i++) {
+    		for(int j = y - 1; j <= y + 1; j++) {
+    			if(this.estVide(i, j)) {
+    				positions.add(new Position(x,y));
+    			}
+    		}
+    	}
+    	
+    	if(!positions.isEmpty()) {
+    		return null;
+    	}
+    	
+    	Collections.shuffle(positions);
+    	return positions.get(0);
     }
 
 }
