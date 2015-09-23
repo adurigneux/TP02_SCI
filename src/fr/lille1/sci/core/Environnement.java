@@ -74,13 +74,14 @@ public class Environnement {
 
 		for (int i = x - 1; i <= x + 1; i++) {
 			for (int j = y - 1; j <= y + 1; j++) {
+				
 				if (!this.estEnDehors(i, j) && this.estVide(i, j)) {
-					positions.add(new Position(x, y));
+					positions.add(new Position(i, j));
 				}
 			}
 		}
 
-		if (!positions.isEmpty()) {
+		if (positions.isEmpty()) {
 			return null;
 		}
 
@@ -89,17 +90,26 @@ public class Environnement {
 	}
 
 	public Position getThonDispo(int x, int y) {
+		
+		List<Position> positions = new ArrayList<Position>();
+
 		for (int i = x - 1; i <= x + 1; i++) {
 			for (int j = y - 1; j <= y + 1; j++) {
 
 				if (!this.estEnDehors(i, j) && this.estThon(i, j)) {
-					return new Position(x, y);
+					positions.add(new Position(i, j));
 				}
 
 			}
 		}
 
-		return null;
+
+		if (positions.isEmpty()) {
+			return null;
+		}
+
+		Collections.shuffle(positions);
+		return positions.get(0);
 	}
 
 	public void addAgent(int x, int y, Agent agent) {

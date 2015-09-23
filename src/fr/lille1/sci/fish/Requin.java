@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import fr.lille1.sci.core.Agent;
 import fr.lille1.sci.core.Environnement;
+import fr.lille1.sci.main.PoissonSimulation;
 import fr.lille1.sci.main.Position;
 
 public class Requin extends Agent {
@@ -20,7 +21,8 @@ public class Requin extends Agent {
 		this.color = Color.GRAY;
 		this.x = x;
 		this.y = y;
-		
+		this.numero = numero;
+
 		this.tempsReproduction = tempsReproduction;
 		this.tempsSansManger = 0;
 		this.limiteTempsSansManger = limiteTempsSansManger;
@@ -30,6 +32,10 @@ public class Requin extends Agent {
 	public void decide() {
 
 		if (this.limiteTempsSansManger == this.tempsSansManger) {
+			if (PoissonSimulation.DEBUG) {
+				System.out.println("Le requin " + numero + " est mort.");
+			}
+			
 			this.env.remove(x, y);
 			return;
 		}
@@ -46,9 +52,21 @@ public class Requin extends Agent {
 
 		} else if (firstThonDispo != null) {
 			manger(firstThonDispo);
+
+			if (PoissonSimulation.DEBUG) {
+				System.out.println("Le requin " + numero
+						+ " a mangé le poisson en " + firstThonDispo.getX()
+						+ ":" + firstThonDispo.getY());
+			}
 		} else if (newReqPosition != null) {
 			bouger(newReqPosition);
 			this.tempsSansManger++;
+
+			if (PoissonSimulation.DEBUG) {
+				System.out.println("Le requin " + numero + " s'est déplacé en "
+						+ x + ":" + y);
+			}
+
 		}
 
 		this.age++;
@@ -68,15 +86,8 @@ public class Requin extends Agent {
 
 	@Override
 	public String toString() {
-		return "Requin [age=" + age + ", tempsReproduction="
-				+ tempsReproduction + ", tempsSansManger=" + tempsSansManger
-				+ ", limiteTempsSansManger=" + limiteTempsSansManger + ", env="
-				+ env + ", x=" + x + ", y=" + y + ", color=" + color
-				+ ", numero=" + numero + ", getX()=" + getX() + ", getY()="
-				+ getY() + ", getEnv()=" + getEnv() + ", getColor()="
-				+ getColor() + ", getNumero()=" + getNumero();
+		return "Requin [age=" + age + ", tempsSansManger=" + tempsSansManger
+				+ ", x=" + x + ", y=" + y + ", numero=" + numero;
 	}
-	
-	
 
 }

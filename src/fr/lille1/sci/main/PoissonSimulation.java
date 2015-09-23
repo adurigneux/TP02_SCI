@@ -3,6 +3,8 @@ package fr.lille1.sci.main;
 import fr.lille1.sci.fish.PoissonSMA;
 
 public class PoissonSimulation {
+	
+	public static final boolean DEBUG = true;
 
     public static void main(String[] args) {
 

@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import fr.lille1.sci.core.Agent;
 import fr.lille1.sci.core.Environnement;
+import fr.lille1.sci.main.PoissonSimulation;
 import fr.lille1.sci.main.Position;
 
 public class Thon extends Agent {
@@ -31,21 +32,22 @@ public class Thon extends Agent {
 					newThonPosition.getY(), tempsReproduction);
 
 			this.env.addAgent(newThonPosition.getX(), newThonPosition.getY(), t);
+			
+			if(PoissonSimulation.DEBUG) {
+				System.out.println("Le poisson " + numero + " s'est reproduit.");
+			}
 		} else if (newThonPosition != null) {
 			bouger(newThonPosition);
+			System.out.println("Le poisson " + numero + " s'est déplacé en " + x + ":" + y);
 		}
 
-		//System.out.println("Thon " + this.numero + " " + this.age);
-		
 		this.age++;
 	}
 
 	@Override
 	public String toString() {
-		return "Thon [age=" + age + ", tempsReproduction=" + tempsReproduction
-				+ ", color=" + color + ", numero=" + numero + "]";
+		return "Thon [age=" + age + ", x=" + x + ", y=" + y + ", numero="
+				+ numero + "]";
 	}
-	
-	
 
 }
