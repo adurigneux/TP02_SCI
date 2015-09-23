@@ -35,9 +35,17 @@ public class Thon extends Agent {
 			bouger(newThonPosition);
 		}
 
-		System.out.println("Thon " + this.numero + " " + this.age);
+		//System.out.println("Thon " + this.numero + " " + this.age);
 		
 		this.age++;
 	}
+
+	@Override
+	public String toString() {
+		return "Thon [age=" + age + ", tempsReproduction=" + tempsReproduction
+				+ ", color=" + color + ", numero=" + numero + "]";
+	}
+	
+	
 
 }

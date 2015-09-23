@@ -66,4 +66,17 @@ public class Requin extends Agent {
 		bouger(positionThon);
 	}
 
+	@Override
+	public String toString() {
+		return "Requin [age=" + age + ", tempsReproduction="
+				+ tempsReproduction + ", tempsSansManger=" + tempsSansManger
+				+ ", limiteTempsSansManger=" + limiteTempsSansManger + ", env="
+				+ env + ", x=" + x + ", y=" + y + ", color=" + color
+				+ ", numero=" + numero + ", getX()=" + getX() + ", getY()="
+				+ getY() + ", getEnv()=" + getEnv() + ", getColor()="
+				+ getColor() + ", getNumero()=" + getNumero();
+	}
+	
+	
+
 }

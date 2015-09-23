@@ -17,7 +17,6 @@ public class Bille extends Agent {
     public static final int LEFT = 8;
     private int vitesse; //(vitesse = nombre de cases par "tour")
     private int sens;
-    private Color couleur;
 
 
     public Bille(Environnement env, int numero) {
@@ -27,10 +26,9 @@ public class Bille extends Agent {
         this.x = random.nextInt(env.getTailleX());
         this.y = random.nextInt(env.getTailleY());
 
-        this.couleur = randomColor();
+        this.color = randomColor();
 
         this.numero = numero;
-        //this.vitesse = random.nextInt(9) + 1; //retirer le 0
         this.vitesse = 1;
         this.sens = random.nextInt(7) + 1;
     }
@@ -49,14 +47,6 @@ public class Bille extends Agent {
 
     public void setSens(int sens) {
         this.sens = sens;
-    }
-
-    public Color getCouleur() {
-        return couleur;
-    }
-
-    public void setCouleur(Color couleur) {
-        this.couleur = couleur;
     }
 
     @Override
@@ -222,7 +212,7 @@ public class Bille extends Agent {
                 "numero=" + numero +
                 ", vitesse=" + vitesse +
                 ", sens=" + sens +
-                ", couleur=" + couleur +
+                ", couleur=" + color +
                 "} " + super.toString();
     }
 }

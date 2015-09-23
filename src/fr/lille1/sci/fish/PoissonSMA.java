@@ -70,10 +70,10 @@ public class PoissonSMA extends SMA {
 					// this.env.clear(a.getX(), a.getY());
 					a.decide();
 
-					//System.out.println(a.toString());
+					System.out.println(a.toString());
 					//env.put(a.getX(), a.getY(), a);
 				}
-
+				
 				setChanged();
 				notifyObservers();
 			}

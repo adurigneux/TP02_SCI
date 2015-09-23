@@ -10,13 +10,12 @@ import java.util.Observer;
 
 import javax.swing.JFrame;
 
-import fr.lille1.sci.billes.Bille;
-import fr.lille1.sci.billes.BilleSMA;
 import fr.lille1.sci.core.Agent;
-import fr.lille1.sci.fish.PoissonSMA;
+import fr.lille1.sci.core.SMA;
 
 public class PixelCanvas extends Canvas implements Observer {
 
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private int tailleCase, width, height;
 	private List<Agent> agents;
@@ -44,12 +43,8 @@ public class PixelCanvas extends Canvas implements Observer {
 
 	@Override
 	public void update(Observable observable, Object objectConcerne) {
-		if (observable instanceof BilleSMA) {
-			agents = ((BilleSMA) observable).getAgents();
-		}
-		if (observable instanceof PoissonSMA) {
-			agents = ((PoissonSMA) observable).getAgents();
-			// System.out.println("Nouveau tour");
+		if (observable instanceof SMA) {
+			agents = ((SMA) observable).getAgents();
 		}
 
 		repaint();
@@ -65,9 +60,8 @@ public class PixelCanvas extends Canvas implements Observer {
 
 		if (agents != null) {
 			for (Agent agent : agents) {
-				Bille b = (Bille) agent; //TODO adapter pour poisson
-				g.setColor(b.getCouleur());
-				g.fillRect(b.getX() * tailleCase, b.getY() * tailleCase,
+				g.setColor(agent.getColor());
+				g.fillRect(agent.getX() * tailleCase, agent.getY() * tailleCase,
 						tailleCase, tailleCase);
 			}
 		}
