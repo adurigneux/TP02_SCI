@@ -25,27 +25,19 @@ public class Thon extends Agent {
 	public void decide() {
 
 		Position newThonPosition = this.env.getPlaceLibre(x, y);
-		
-		if (this.age % this.tempsReproduction == 0) {
-			
-			if (newThonPosition != null) {
-				Thon t = new Thon(env, this.numero * 2, newThonPosition.getX(),
-						newThonPosition.getY(), tempsReproduction);
-				
-				//metre a jour les infos du sma et de l'env actuel
-			} 
-		} else {
+
+		if (this.age % this.tempsReproduction == 0 && newThonPosition != null) {
+			Thon t = new Thon(env, this.numero * 2, newThonPosition.getX(),
+					newThonPosition.getY(), tempsReproduction);
+
+			this.env.addAgent(newThonPosition.getX(), newThonPosition.getY(), t);
+		} else if (newThonPosition != null) {
 			bouger(newThonPosition);
 		}
 
+		System.out.println("Thon " + this.numero + " " + this.age);
+		
 		this.age++;
-	}
-
-	private void bouger(Position newThonPosition) {
-		this.env.clear(this.x, this.y);
-		this.x = newThonPosition.getX();
-		this.y = newThonPosition.getY();
-		this.env.put(x, y, this);
 	}
 
 }

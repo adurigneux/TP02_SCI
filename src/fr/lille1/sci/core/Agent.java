@@ -2,6 +2,8 @@ package fr.lille1.sci.core;
 
 import java.awt.Color;
 
+import fr.lille1.sci.main.Position;
+
 public abstract class Agent {
 
     protected Environnement env;
@@ -59,6 +61,13 @@ public abstract class Agent {
     public void setNumero(int numero) {
         this.numero = numero;
     }
+    
+	public void bouger(Position position) {
+		this.env.clear(this.x, this.y);
+		this.x = position.getX();
+		this.y = position.getY();
+		this.env.put(x, y, this);
+	}
 
 	public abstract void decide();
 

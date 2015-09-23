@@ -2,11 +2,11 @@ package fr.lille1.sci.main;
 
 import fr.lille1.sci.fish.PoissonSMA;
 
-public class Simulation {
+public class PoissonSimulation {
 
     public static void main(String[] args) {
 
-        if (args.length < 6) {
+        if (args.length < 9) {
             System.out.println("Usage : java Simulation tailleX tailleY tailleCase nombrePoissons nombreRequins tempsReproductionPoisson tempsReproductionRequin tempsSansManger sleepTime");
             return;
         }
@@ -21,14 +21,27 @@ public class Simulation {
         int tempsReproductionRequin = Integer.parseInt(args[6]);
         int tempsSansManger = Integer.parseInt(args[7]);
         
-        int sleepTime = Integer.parseInt(args[8]);
+        int sleepTime = Integer.parseInt(args[8]);  
+        
+        System.out.println(sleepTime);
+
+        PoissonSMA sma = new PoissonSMA();
+        
+        System.out.println("init global");
 
         
-        
-        PoissonSMA sma = new PoissonSMA();
         sma.init(tailleX, tailleY, nombrePoissons + nombreRequins);
+        
+        System.out.println("init poissons");
+        
         sma.initPoissons(nombrePoissons, tempsReproductionPoisson);
+        
+        System.out.println("init requins");
+        
+        
         sma.initRequins(nombreRequins, tempsReproductionRequin, tempsSansManger);
+        
+        System.out.println("init canvas");
 
         PixelCanvas canvas = new PixelCanvas(tailleX, tailleY, tailleCase);
         sma.addObserver(canvas);
