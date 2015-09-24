@@ -1,8 +1,6 @@
 package fr.lille1.sci.core;
 
-import java.awt.Color;
-
-import fr.lille1.sci.main.Position;
+import java.awt.*;
 
 public abstract class Agent {
 
@@ -44,16 +42,16 @@ public abstract class Agent {
     public void setEnv(Environnement env) {
         this.env = env;
     }
-    
+
 
     public Color getColor() {
-		return color;
-	}
+        return color;
+    }
 
-	public void setColor(Color color) {
-		this.color = color;
-	}
-	
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public int getNumero() {
         return numero;
     }
@@ -61,15 +59,15 @@ public abstract class Agent {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-    
-	public void bouger(Position position) {
-		this.env.clear(this.x, this.y);
-		this.x = position.getX();
-		this.y = position.getY();
-		this.env.put(x, y, this);
-	}
 
-	public abstract void decide();
+    public void bouger(Position position) {
+        this.env.clear(this.x, this.y);
+        this.x = position.getX();
+        this.y = position.getY();
+        this.env.put(x, y, this);
+    }
+
+    public abstract void decide();
 
     @Override
     public String toString() {

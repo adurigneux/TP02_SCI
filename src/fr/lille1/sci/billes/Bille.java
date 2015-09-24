@@ -1,9 +1,10 @@
 package fr.lille1.sci.billes;
-import java.awt.Color;
-import java.util.Random;
 
 import fr.lille1.sci.core.Agent;
 import fr.lille1.sci.core.Environnement;
+
+import java.awt.*;
+import java.util.Random;
 
 public class Bille extends Agent {
 

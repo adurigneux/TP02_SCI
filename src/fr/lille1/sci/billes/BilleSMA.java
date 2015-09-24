@@ -1,12 +1,13 @@
 package fr.lille1.sci.billes;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import fr.lille1.sci.core.Agent;
 import fr.lille1.sci.core.Environnement;
 import fr.lille1.sci.core.SMA;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class BilleSMA extends SMA {
@@ -25,9 +26,8 @@ public class BilleSMA extends SMA {
     }
 
     @Override
-    public void run(final int nbTour, int sleepTime) {
+    public void run(int sleepTime) {
 
-        final int[] compteur = {0};
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -44,14 +44,8 @@ public class BilleSMA extends SMA {
 
                 setChanged();
                 notifyObservers();
-
-                compteur[0]++;
-                if (compteur[0] == nbTour) {
-                    this.cancel();
-                }
             }
         }, 0, sleepTime);
-
 
 
     }
