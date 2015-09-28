@@ -60,6 +60,7 @@ public class Environnement {
     }
 
     public void clear(int x, int y) {
+
         this.espace[x][y] = null;
     }
 

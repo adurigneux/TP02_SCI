@@ -94,8 +94,8 @@ public class PoissonSimulation {
         PrintWriter outRequin = null;
         PrintWriter outThon = null;
         try{
-             outRequin = new PrintWriter(new BufferedWriter(new FileWriter("requin.txt", true)));
-             outThon = new PrintWriter(new BufferedWriter(new FileWriter("thon.txt", true)));
+            outRequin = new PrintWriter(new BufferedWriter(new FileWriter("requin.txt", true)));
+            outThon = new PrintWriter(new BufferedWriter(new FileWriter("thon.txt", true)));
 
             outRequin.println( sma.getPopulationOf(Requin.class));
             outThon.println( sma.getPopulationOf(Thon.class));

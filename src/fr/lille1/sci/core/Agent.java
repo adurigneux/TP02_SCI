@@ -10,6 +10,7 @@ public abstract class Agent {
     protected Color color;
     protected int numero;
 
+
     public Agent(Environnement env, int x, int y) {
         this.env = env;
         this.x = x;
@@ -66,8 +67,10 @@ public abstract class Agent {
         this.y = position.getY();
         this.env.put(x, y, this);
     }
+    
 
-    public abstract void decide();
+
+	public abstract void decide();
 
     @Override
     public String toString() {

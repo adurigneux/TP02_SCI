@@ -18,7 +18,7 @@ public class Requin extends Agent {
                   int tempsReproduction, int limiteTempsSansManger) {
         super(env, 0, 0);
 
-        this.color = Color.GRAY;
+        this.color = Color.RED;
         this.x = x;
         this.y = y;
         this.numero = numero;
@@ -37,7 +37,6 @@ public class Requin extends Agent {
             if (PoissonSimulation.DEBUG) {
                 System.out.println("Le requin " + numero + " est mort.");
             }
-
             this.env.remove(x, y);
             return;
         }
