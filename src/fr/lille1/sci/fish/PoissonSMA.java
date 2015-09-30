@@ -61,11 +61,12 @@ public class PoissonSMA extends SMA {
 
 				List<Agent> currentAgents = new ArrayList<Agent>(getAgents());
 				Collections.shuffle(currentAgents);
+				
 
 				for (Agent a : currentAgents) {
-					
+					if(a.isAlive()){
 						a.decide();
-					
+					}
 					// System.out.println(a.toString());
 				}
 				PoissonSimulation.enregisterPopulations(PoissonSMA.this);

@@ -48,6 +48,11 @@ public class Requin extends Agent {
             Requin r = new Requin(env, this.numero * 2, newReqPosition.getX(),
                     newReqPosition.getY(), tempsReproduction, tempsSansManger);
 
+            if (PoissonSimulation.DEBUG) {
+                System.out.println("Le requin " + numero
+                        + "le poisson  s'est reproduit en : " + newReqPosition.getX()
+                        + ":" + newReqPosition.getY());
+            }
             this.env.addAgent(newReqPosition.getX(), newReqPosition.getY(), r);
             this.tempsSansManger++;
 

@@ -24,3 +24,7 @@ L'environnement contenant les billes est un espace 2D leur permettant de se dép
 
 ### Requin (prédateur) - Thon (Proie) 
 java SimulationPoissons 200 200 4 4000 400 8 15 3 100
+
+
+SIMULATION ANTOINE :
+200 200 4 4000 850 8 10 8 100

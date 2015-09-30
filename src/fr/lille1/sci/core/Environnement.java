@@ -35,6 +35,7 @@ public class Environnement {
 
     public void remove(int x, int y) {
         Agent agent = this.espace[x][y];
+        agent.setAlive(false);
         this.sma.removeAgent(agent);
         clear(x, y);
     }
@@ -56,11 +57,10 @@ public class Environnement {
     }
 
     public boolean estVide(int x, int y) {
-        return this.get(x, y) == null;
+        return this.get(x, y) == null || !this.get(x, y).isAlive;
     }
 
     public void clear(int x, int y) {
-
         this.espace[x][y] = null;
     }
 

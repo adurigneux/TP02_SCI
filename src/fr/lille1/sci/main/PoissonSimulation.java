@@ -55,9 +55,7 @@ public class PoissonSimulation {
         sma.initRequins(nombreRequins, tempsReproductionRequin, tempsSansManger);
 
         System.out.println("init canvas");
-        System.out.println(sma.getTotalPopoulation());
-        System.out.println(sma.getPopulationOf(Requin.class) + "  " + nombreRequins);
-        System.out.println(sma.getPopulationOf(Thon.class) + "  " + nombrePoissons);
+
 
         PixelCanvas canvas = new PixelCanvas(tailleX, tailleY, tailleCase);
         sma.addObserver(canvas);
