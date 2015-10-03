@@ -30,6 +30,7 @@ A chaque nouvelle étape de la simulation et pour chaque individu, nous appelons 
 * Ensuite, nous regardons dans le voisinage du requin s'il peut manger un poisson 
 * Enfin, nous regardons s'il peut se déplacer 
 Dans notre algorithme, un requin ne peut faire qu'une seule de ces actions par tour de la simulation.
+
 #### Pour le thon
 * Nous vérifions si le thon est en âge de se reproduit et s'il dispose d'une place libre, si c'est le cas, nous créons un nouveau thon dans la grille.
 * Nous vérifions s'il peut se déplacer dans la grille
