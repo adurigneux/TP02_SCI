@@ -34,7 +34,7 @@ public abstract class SMA extends Observable {
     }
 
     public int getPopulationOf(Class<?> classe) {
-        List<Object> sublist = new ArrayList<>();
+        List<Object> sublist = new ArrayList<Object>();
         for (Agent a : agents) {
             if (a.getClass() == classe) {
                 sublist.add(a);

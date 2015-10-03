@@ -40,22 +40,11 @@ public class PoissonSimulation {
 
         PoissonSMA sma = new PoissonSMA();
 
-        System.out.println("init global");
-
-
         sma.init(tailleX, tailleY, nombrePoissons + nombreRequins);
-
-        System.out.println("init poissons");
 
         sma.initThons(nombrePoissons, tempsReproductionPoisson);
 
-        System.out.println("init requins");
-
-
         sma.initRequins(nombreRequins, tempsReproductionRequin, tempsSansManger);
-
-        System.out.println("init canvas");
-
 
         PixelCanvas canvas = new PixelCanvas(tailleX, tailleY, tailleCase);
         sma.addObserver(canvas);

@@ -25,14 +25,14 @@ au cours de la simulation.
 
 A chaque nouvelle étape de la simulation et pour chaque individu, nous appelons la méthode décide qui fonctionne comme suit :
 #### Pour le requin 
-    * Nous vérifions si le requin n'a pas mangé depuis trop longtemps : si c'est le cas, il meurt.
-    * Nous vérifions après s'il n'est pas en âge de se reproduire et si il dispose d'une place libre : si c'est le cas, nous créons un nouveau requin dans la grille
-    * Ensuite, nous regardons dans le voisinage du requin s'il peut manger un poisson 
-    * Enfin, nous regardons s'il peut se déplacer 
+* Nous vérifions si le requin n'a pas mangé depuis trop longtemps : si c'est le cas, il meurt.
+* Nous vérifions après s'il n'est pas en âge de se reproduire et si il dispose d'une place libre : si c'est le cas, nous créons un nouveau requin dans la grille
+* Ensuite, nous regardons dans le voisinage du requin s'il peut manger un poisson 
+* Enfin, nous regardons s'il peut se déplacer 
 Dans notre algorithme, un requin ne peut faire qu'une seule de ces actions par tour de la simulation.
 #### Pour le thon
-    * Nous vérifions si le thon est en âge de se reproduit et s'il dispose d'une place libre, si c'est le cas, nous créons un nouveau thon dans la grille.
-    * Nous vérifions s'il peut se déplacer dans la grille
+* Nous vérifions si le thon est en âge de se reproduit et s'il dispose d'une place libre, si c'est le cas, nous créons un nouveau thon dans la grille.
+* Nous vérifions s'il peut se déplacer dans la grille
 De même que pour les requins, le thon ne peut effectuer qu'une seule action à la fois par tour.
 
 ## Compilation du projet
@@ -44,11 +44,38 @@ javac *.java
 
 ## Exécution du projet
 ### Billes
+```bash
+java BilleSimulation tailleX tailleY tailleBilleCase nombreBilles nombreTours tempsArret
+```
+* tailleX, tailleY : la taille en X et Y de la fenêtre de simulation (pixels)
+* tailleBileCase : la taille du côté d'une case représentant une bille (pixels)
+* nombreBilles : le nombre de billes contenues dans la simulation
+* nombreTours : le nombre de tours de la simulation avant qu'elle s'arrête
+* tempsArret : le temps en ms entre chaque tour de la simulation
 
 ### Requin (prédateur) - Thon (Proie) 
+```bash
+java PoissonSimulation tailleX tailleY tailleCase nombreThon nombreRequins tempsReproductionThon tempsReproductionRequin tempsSansMangerRequin sleepTime
+```
+
+* tailleX, tailleY : la taille en X et Y de la fenêtre de simulation (pixels)
+* tailleCase : la taille du côté d'une case représentant un individu (pixels)
+* nombrePoissons : nombre de thons dans la simulation au départ
+* nombreRequins : nombre de requins dans la simulation au départ
+* tempsReproductionThon : temps après lequel un thon se reproduit (en tours de simulation)
+* tempsReproductionRequin : temps après lequel un requin se reproduit (en tours de simulation)
+* tempsSansMangerRequin : temps après lequel un requin meurt lorsqu'il n'a pas pu manger un thon
+* sleepTime : le temps en ms entre chaque tour de la simulation
+
+#### Exemples de configuration
+##### En équilibre 
 ```bash
 java PoissonSimulation 200 200 4 4000 400 8 15 3 100
 ```
 
-SIMULATION ANTOINE :
-200 200 4 4000 850 8 10 8 100
+![alt tag](http://a23.imgup.net/Untitled28f0b.png)
+
+##### En non-équilibre
+```bash
+java PoissonSimulation 200 200 4 4000 850 8 10 8 100
+```
