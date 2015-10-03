@@ -80,12 +80,7 @@ public class Requin extends Agent {
     }
 
     private void manger(Position positionThon) {
-        this.env.remove(positionThon.getX(), positionThon.getY()); // On retire
-        // le
-        // poisson
-        // de
-        // l'espace
-        // et du SMA
+        this.env.remove(positionThon.getX(), positionThon.getY());
         this.tempsSansManger = 0; // On raz le temps sans manger
         bouger(positionThon);
     }
