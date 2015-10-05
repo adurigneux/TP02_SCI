@@ -1,82 +1,85 @@
-# Simulation centrée individus - TP
+# Simulation centrÃ©e individus - TP
 
 * Antoine Durigneux
 * Quentin Warnant
 
-## Introduction
-Dans le cadre du cours de SCI, il nous a été demandé de développer un environnement de simulation en Java. 
-Cet environnement doit permettre à l'utilisateur de suivre graphiquement l'évolution de population d'agents, 
-soit des billes qui s'entre-choquent, soit l'évolution de requins/thons dans un espace clos. 
+##Â Introduction
+Dans le cadre du cours de SCI, il nous a Ã©tÃ© demandÃ© de dÃ©velopper un environnement de simulation en Java. 
+Cet environnement doit permettre Ã  l'utilisateur de suivre graphiquement l'Ã©volution de population d'agents, 
+soit des billes qui s'entre-choquent, soit l'Ã©volution de requins/thons dans un espace clos. 
 
 
 ## Algorithmes
 ### Billes
-L'environnement contenant les billes est un espace 2D non-torique leur permettant de se déplacer en horizontal, diagonal et vertical. 
-Lorsque nous générons les billes, nous leur donnons un sens et une vitesse aléatoire déterminés au moment de la création. 
+L'environnement contenant les billes est un espace 2D non-torique leur permettant de se dÃ©placer en horizontal, diagonal et vertical. 
+Lorsque nous gÃ©nÃ©rons les billes, nous leur donnons un sens et une vitesse alÃ©atoire dÃ©terminÃ©s au moment de la crÃ©ation. 
 Notre algorithme fonctionne comme suit : 
-si la bille peut se déplacer à sa vitesse (nombre de cases) et dans sa direction sans rencontrer une autre bille ou un bord, 
-elle le fait, sinon elle se "rebondit" et nous inversons le sens de son déplacement. 
+si la bille peut se dÃ©placer Ã  sa vitesse (nombre de cases) et dans sa direction sans rencontrer une autre bille ou un bord, 
+elle le fait, sinon elle se "rebondit" et nous inversons le sens de son dÃ©placement. 
 
-### Requin (prédateur) - Thon (Proie)
-L'environnement contenant les requins et les thons est un espace 2D non-torique leur permettant de se déplacer en horizontal, diagonal et vertical.
-Lorsque nous générons les requins, nous leur donnons un temps maximum de vie sans manger et un temps de reproduction. Même principe pour la génération
-des thons bien qu'ils n'aient pas de temps sans manger. Pour les deux espèces, ils vieillissent au fil du temps et nous conservons donc l'âge de chaque individu
+### Requin (prÃ©dateur) - Thon (Proie)
+L'environnement contenant les requins et les thons est un espace 2D non-torique leur permettant de se dÃ©placer en horizontal, diagonal et vertical.
+Lorsque nous gÃ©nÃ©rons les requins, nous leur donnons un temps maximum de vie sans manger et un temps de reproduction. MÃªme principe pour la gÃ©nÃ©ration
+des thons bien qu'ils n'aient pas de temps sans manger. Pour les deux espÃ¨ces, ils vieillissent au fil du temps et nous conservons donc l'Ã¢ge de chaque individu
 au cours de la simulation. 
 
-A chaque nouvelle étape de la simulation et pour chaque individu, nous appelons la méthode décide qui fonctionne comme suit :
+A chaque nouvelle Ã©tape de la simulation et pour chaque individu, nous appelons la mÃ©thode dÃ©cide qui fonctionne comme suit :
 #### Pour le requin 
-* Nous vérifions si le requin n'a pas mangé depuis trop longtemps : si c'est le cas, il meurt.
-* Nous vérifions après s'il n'est pas en âge de se reproduire et si il dispose d'une place libre : si c'est le cas, nous créons un nouveau requin dans la grille
+* Nous vÃ©rifions si le requin n'a pas mangÃ© depuis trop longtemps : si c'est le cas, il meurt.
+* Nous vÃ©rifions aprÃ¨s s'il n'est pas en Ã¢ge de se reproduire et si il dispose d'une place libre : si c'est le cas, nous crÃ©ons un nouveau requin dans la grille
 * Ensuite, nous regardons dans le voisinage du requin s'il peut manger un poisson 
-* Enfin, nous regardons s'il peut se déplacer 
+* Enfin, nous regardons s'il peut se dÃ©placer 
 Dans notre algorithme, un requin ne peut faire qu'une seule de ces actions par tour de la simulation.
 
 #### Pour le thon
-* Nous vérifions si le thon est en âge de se reproduit et s'il dispose d'une place libre, si c'est le cas, nous créons un nouveau thon dans la grille.
-* Nous vérifions s'il peut se déplacer dans la grille
-De même que pour les requins, le thon ne peut effectuer qu'une seule action à la fois par tour.
+* Nous vÃ©rifions si le thon est en Ã¢ge de se reproduit et s'il dispose d'une place libre, si c'est le cas, nous crÃ©ons un nouveau thon dans la grille.
+* Nous vÃ©rifions s'il peut se dÃ©placer dans la grille
+De mÃªme que pour les requins, le thon ne peut effectuer qu'une seule action Ã  la fois par tour.
 
 ## Compilation du projet
-* JDK > 1.7 demandé pour la compilation du projet
+* JDK > 1.7 demandÃ© pour la compilation du projet
 
 ```bash 
 javac *.java
 ```
 
-## Exécution du projet
+##Â ExÃ©cution du projet
 ### Billes
 ```bash
 java BilleSimulation tailleX tailleY tailleBilleCase nombreBilles nombreTours tempsArret
 ```
-* tailleX, tailleY : la taille en X et Y de la fenêtre de simulation (pixels)
-* tailleBileCase : la taille du côté d'une case représentant une bille (pixels)
+* tailleX, tailleY : la taille en X et Y de la fenÃªtre de simulation (pixels)
+* tailleBileCase : la taille du cÃ´tÃ© d'une case reprÃ©sentant une bille (pixels)
 * nombreBilles : le nombre de billes contenues dans la simulation
-* nombreTours : le nombre de tours de la simulation avant qu'elle s'arrête
+* nombreTours : le nombre de tours de la simulation avant qu'elle s'arrÃªte
 * tempsArret : le temps en ms entre chaque tour de la simulation
 
-### Requin (prédateur) - Thon (Proie) 
+### Requin (prÃ©dateur) - Thon (Proie) 
 ```bash
 java PoissonSimulation tailleX tailleY tailleCase nombreThon nombreRequins tempsReproductionThon tempsReproductionRequin tempsSansMangerRequin sleepTime
 ```
 
-* tailleX, tailleY : la taille en X et Y de la fenêtre de simulation (pixels)
-* tailleCase : la taille du côté d'une case représentant un individu (pixels)
-* nombrePoissons : nombre de thons dans la simulation au départ
-* nombreRequins : nombre de requins dans la simulation au départ
-* tempsReproductionThon : temps après lequel un thon se reproduit (en tours de simulation)
-* tempsReproductionRequin : temps après lequel un requin se reproduit (en tours de simulation)
-* tempsSansMangerRequin : temps après lequel un requin meurt lorsqu'il n'a pas pu manger un thon
+* tailleX, tailleY : la taille en X et Y de la fenÃªtre de simulation (pixels)
+* tailleCase : la taille du cÃ´tÃ© d'une case reprÃ©sentant un individu (pixels)
+* nombrePoissons : nombre de thons dans la simulation au dÃ©part
+* nombreRequins : nombre de requins dans la simulation au dÃ©part
+* tempsReproductionThon : temps aprÃ¨s lequel un thon se reproduit (en tours de simulation)
+* tempsReproductionRequin : temps aprÃ¨s lequel un requin se reproduit (en tours de simulation)
+* tempsSansMangerRequin : temps aprÃ¨s lequel un requin meurt lorsqu'il n'a pas pu manger un thon
 * sleepTime : le temps en ms entre chaque tour de la simulation
 
 #### Exemples de configuration
-##### En équilibre 
+##### En Ã©quilibre 
 ```bash
 java PoissonSimulation 200 200 4 4000 400 8 15 3 100
 ```
 
 ![alt tag](http://a23.imgup.net/Untitled28f0b.png)
 
-##### En non-équilibre
+##### En non-Ã©quilibre
 ```bash
 java PoissonSimulation 200 200 4 4000 850 8 10 8 100
 ```
+
+##### RÃ©sultats graphiques
+Pour visualiser les graphiques rÃ©sultant des simulations, il suffit d'ouvrir le fichier excel Ã  la racine du dossier. La feuille de calcul est liÃ©e aux deux fichiers rÃ©sultats requin.txt et thon.txt regÃ©nÃ©rÃ©s Ã  chaque simulation.
