@@ -15,7 +15,7 @@ public class PixelCanvas extends Canvas implements Observer {
 	private JFrame frame;
 	private int tailleCase, width, height;
 	private List<Agent> agents;
-	private boolean redraw = true;
+
 
 	PixelCanvas(int width, int height, int tailleCase) {
 		frame = new JFrame();
@@ -43,26 +43,28 @@ public class PixelCanvas extends Canvas implements Observer {
 		if (observable instanceof SMA) {
 			agents = ((SMA) observable).getAgents();
 		}
-		if (redraw)
-			repaint();
+
+		repaint();
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
-		redraw = false;
-		g.clearRect(0, 0, width, height);
+		//super.paint(g);
+
 		g.setColor(Color.black);
 		g.drawRect(0, 0, width, height);
 
 		if (agents != null) {
 			for (Agent agent : agents) {
-				g.setColor(agent.getColor());
-				g.fillRect(agent.getX() * tailleCase,
-						agent.getY() * tailleCase, tailleCase, tailleCase);
+				if (agent.isAlive()) {
+					g.setColor(agent.getColor());
+					g.fillRect(agent.getX() * tailleCase, agent.getY()
+							* tailleCase, tailleCase, tailleCase);
+				}
 			}
+			
 		}
-		redraw = true;
+
 	}
 
 }
